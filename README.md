@@ -1,43 +1,82 @@
-# Backend for Customer Management System
+## Task: Implement User Data Storage in MongoDB
 
-Imagine you are tasked with setting up a backend for a customer management system. The system's database is hosted on MongoDB, and you need to create a Node.js server using Express.js to interact with the database. Your job is to set up the server, connect it to MongoDB atlas, and ensure the connection status is logged appropriately.
+### Scenario:
 
+As part of the backend development team for a new user management system, you need to implement the functionality that allows storing user data into MongoDB. The backend is already set up, and the task is to:
 
 ## Instructions:
 
-### Initialize the Project:
+### Project Setup:
 
-Basic express template was given  
-You need to install all the necessary packages required for the task.
+- You are provided with the initial Express.js server code that includes basic server setup and necessary packages.
+- You are also provided with the MongoDB user schema that defines the fields required for user data.
 
-## Environment Configuration:
+## MongoDB Connection:
 
-- Set up a `.env` file in the root directory.
-- Store the MongoDB connection string securely in the `.env` file.
-- The connection string must follow the format:
-`
-  MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net<databaseName>?retryWrites=true&w=majority
-`
+- Set up the MongoDB atlas connection using `.env` file that contains the MongoDB URI.
+- Ensure the connection to MongoDB is successful and log:
+  `Connected to database`
+- If the connection fails, the server should log the following error message along with details of the error:`Error connecting to database`
 
-## Backend Server Requirements:
+## Create a POST API Endpoint:
 
-- Go to `index.js`.
-- Set up an Express.js server.
-- Write the code to:
-  - Load and use environment variables from the `.env` file.
-  - Connect to MongoDB using a database library.
+- Create a POST API endpoint at `/api/users` to handle incoming user data.
+- The request body will contain the user data that needs to be validated and saved in the MongoDB database.
 
-## Logging Requirements:
+## User Data Validation:
 
-- On a successful connection to the database, the server should log the following message:
- ` Connected to database`
-- If the connection fails, the server should log the following error message along with details of the error: `Error connecting to database: <Error details>
-`
+- Use the provided MongoDB user schema to validate the incoming data.
+- Ensure the data matches the schema (e.g., correct data types, required fields, etc.).
+  - If the data is invalid:
+    - Return a `400` status code with an appropriate error message.
+  - If the data is valid:
+    - Store it in MongoDB.
+    - Return a `201` status code with a success message.
 
-## Testing the Backend:
+## Error Handling:
 
-- Start the server and test the connection to MongoDB.
-- Ensure appropriate messages are logged based on the connection status.
+- Implement proper error handling for:
+  - Database connection issues.
+  - User data validation process.
+
+- Return appropriate HTTP status codes:
+  - `400` for validation failures.
+  - `500` for server errors or any other unexpected issues.
+
+## Deliverables:
+
+### A working Express.js server file that:
+- Successfully connects to MongoDB.
+- Implements a POST API endpoint to receive and store user data in MongoDB.
+- Validates incoming data against the provided schema.
+
+### A `.env` file:
+- Storing the MongoDB URI securely.
+
+### Console Outputs:
+- Showing the success or failure of the database connection.
+
+### Responses from the POST API Endpoint:
+
+#### On Success:
+Status: 201  
+Message: User created successfully  
+
+#### On Validation Error:  
+Status: 400  
+Message: Validation error (explanation)  
+
+## Submission:
+
+- Submit the complete project including:
+  - The Express.js server code.
+  - The MongoDB user schema.
+  - The `.env` file with placeholder MongoDB credentials.
+
+- Ensure proper testing of the POST API endpoint.
+
+- Include any necessary instructions for running the server.
+
 
 
 # **How to Fork and Set Up Your Repository**
